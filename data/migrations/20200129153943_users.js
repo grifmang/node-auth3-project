@@ -4,7 +4,7 @@ exports.up = function(knex) {
       table.increments();
       table.string('username').notNullable().unique();
       table.string('password').notNullable();
-      table.string('department');
+      table.string('department').notNullable();
   })
 };
 

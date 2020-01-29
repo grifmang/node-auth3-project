@@ -7,9 +7,16 @@ const { jwtSecret } = require('../api/config/secrets.js');
 const api = require('./apiModel.js');
 
 router.get('/users', restricted, (req, res) => {
-    api.find()
-        .then(users => {
-            return res.status(200).json(users);
+    api.findByUsername(req.username)
+        .then(user => {
+            api.findDepartmentUsers(user.department)
+                .then(response => {
+                    return res.status(200).json(response);
+                })
+                .catch(err => {
+                    console.log(err);
+                    return res.status(400).json({ error: "Couldn't get department users." });
+                })
         })
         .catch(error => {
             console.log(error);

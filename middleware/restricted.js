@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
       if (err) {
         return res.status(401).json({ error: "Token is not valid." })
       } else {
+        req.username = decodedToken.username;
         return next();
       }
     })

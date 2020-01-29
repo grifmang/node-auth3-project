@@ -5,6 +5,8 @@ module.exports = {
   find,
   findBy,
   findById,
+  findByUsername,
+  findDepartmentUsers
 };
 
 function find() {
@@ -25,4 +27,12 @@ function findById(id) {
   return db('users')
     .where({ id })
     .first();
+}
+
+function findDepartmentUsers(department) {
+  return db('users').where({ department });
+}
+
+function findByUsername(username) {
+  return db('users').where({ username }).first();
 }
