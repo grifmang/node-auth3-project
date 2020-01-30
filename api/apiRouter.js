@@ -54,7 +54,7 @@ router.post('/login', (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            return res.status(500).json({ error: "Something went wrong registering user." });
+            return res.status(500).json({ error: "Something went wrong logging in user." });
         });
 })
 
